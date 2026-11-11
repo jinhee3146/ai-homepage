@@ -1,0 +1,89 @@
+{
+  "companyName": "ABC 기업",
+  "primaryColor": "#1554A3",
+  "heroEyebrow": "산업 기술 파트너",
+  "heroTitle": "미래를 만드는 기업",
+  "heroDescription": "혁신적인 기술과 서비스로 생산, 시스템, 인프라를 한 흐름에 연결합니다.",
+  "pageDescription": "ABC 기업은 혁신적인 기술과 서비스로 산업 현장의 다음 단계를 설계합니다.",
+  "menu": [
+    { "label": "회사소개", "href": "#about" },
+    { "label": "사업분야", "href": "#business" },
+    { "label": "제품소개", "href": "#products" },
+    { "label": "고객문의", "href": "#contact" }
+  ],
+  "heroActions": [
+    { "label": "프로젝트 상담", "href": "#contact" },
+    { "label": "사업분야 보기", "href": "#business", "ghost": true }
+  ],
+  "heroPanel": {
+    "label": "ABC 기업이 맡는 일",
+    "items": [
+      { "title": "설계", "description": "현장 진단과 도입 계획" },
+      { "title": "구축", "description": "시스템과 설비 연동" },
+      { "title": "운영", "description": "안정화와 성과 관리" }
+    ]
+  },
+  "about": {
+    "title": "현장에 남는 기술을 만듭니다",
+    "body": "ABC 기업은 제조와 서비스 기업이 새로운 설비를 들이기 전부터, 그 설비가 매일의 업무에 남기까지 함께합니다. 보기 좋은 제안서보다 가동 첫날의 안정, 그리고 일 년 뒤의 운영 기록을 더 중요하게 봅니다.",
+    "facts": [
+      { "label": "업력", "value": "18년" },
+      { "label": "수행 프로젝트", "value": "240건" },
+      { "label": "운영 지원", "value": "전국" }
+    ]
+  },
+  "business": {
+    "title": "필요한 구간만, 정확하게",
+    "items": [
+      {
+        "title": "스마트 제조",
+        "description": "생산 라인의 상태와 품질 데이터를 모아 멈추기 전에 원인을 찾습니다."
+      },
+      {
+        "title": "디지털 전환",
+        "description": "흩어진 업무 시스템을 연결해 주문부터 출고까지 같은 숫자를 보게 합니다."
+      },
+      {
+        "title": "인프라 구축",
+        "description": "네트워크, 서버, 보안 환경을 현장이 감당할 수 있는 규모로 구성합니다."
+      },
+      {
+        "title": "기술 컨설팅",
+        "description": "도입 전에 범위와 일정을 정리하고, 투자 대비 효과를 기준으로 순서를 정합니다."
+      }
+    ]
+  },
+  "products": {
+    "title": "바로 운영할 수 있는 제품",
+    "items": [
+      {
+        "name": "ABC Line",
+        "description": "설비 상태와 생산 실적을 한 화면에서 보고, 이상 징후를 교대 전에 공유합니다."
+      },
+      {
+        "name": "ABC Connect",
+        "description": "기존 전사 시스템과 현장 장비를 연결해 수작업으로 옮기던 데이터를 없앱니다."
+      },
+      {
+        "name": "ABC Guard",
+        "description": "접근 권한과 백업, 장애 알림을 묶어 작은 전산팀도 운영을 이어갈 수 있게 합니다."
+      }
+    ]
+  },
+  "contact": {
+    "title": "상담이 필요한 현장을 알려주세요",
+    "description": "범위가 정해지지 않아도 됩니다. 현재 설비와 가장 막히는 지점만 적어도 첫 미팅을 준비할 수 있습니다.",
+    "address": "서울특별시 중구 세종대로 110",
+    "phone": "02-1234-5678",
+    "email": "contact@abc.example",
+    "fields": {
+      "name": "이름",
+      "company": "회사",
+      "phone": "연락처",
+      "message": "문의 내용"
+    },
+    "submit": "문의 보내기",
+    "success": "문의가 접수되었습니다. 영업일 기준 하루 안에 연락드리겠습니다."
+  },
+  "year": 2026
+}

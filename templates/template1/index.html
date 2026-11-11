@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABC 기업</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="#top"></a>
+      <input class="nav-toggle" id="nav-toggle" type="checkbox">
+      <label class="nav-button" for="nav-toggle">메뉴</label>
+      <nav class="nav" aria-label="주요 메뉴"></nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" data-field="hero-eyebrow"></p>
+        <h1 data-field="hero-title"></h1>
+        <p class="lead" data-field="hero-description"></p>
+        <div class="hero-actions"></div>
+      </div>
+      <aside class="hero-panel" aria-label="회사 요약">
+        <p class="panel-label"></p>
+        <ul></ul>
+      </aside>
+    </section>
+
+    <section class="about" id="about">
+      <div class="section-heading">
+        <p class="eyebrow"></p>
+        <h2></h2>
+      </div>
+      <div class="about-grid">
+        <p></p>
+        <dl class="facts"></dl>
+      </div>
+    </section>
+
+    <section class="business" id="business">
+      <div class="section-heading">
+        <p class="eyebrow"></p>
+        <h2></h2>
+      </div>
+      <ol class="business-list"></ol>
+    </section>
+
+    <section class="products" id="products">
+      <div class="section-heading light">
+        <p class="eyebrow"></p>
+        <h2></h2>
+      </div>
+      <div class="product-grid"></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-copy">
+        <p class="eyebrow"></p>
+        <h2></h2>
+        <p></p>
+        <address></address>
+      </div>
+      <form class="inquiry" action="#" method="post">
+        <p class="form-note" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script>
+    function text(element, value) {
+      element.textContent = value || "";
+    }
+
+    function menuLabel(config, href) {
+      var item = (config.menu || []).find(function (entry) {
+        return entry.href === href;
+      });
+      return item ? item.label : "";
+    }
+
+    function hexToRgb(hex) {
+      var value = String(hex || "").replace("#", "").trim();
+      if (value.length === 3) {
+        value = value.split("").map(function (char) { return char + char; }).join("");
+      }
+      var number = parseInt(value, 16);
+      if (!number && number !== 0) return [21, 84, 163];
+      return [(number >> 16) & 255, (number >> 8) & 255, number & 255];
+    }
+
+    function mix(hex, target, amount) {
+      var base = hexToRgb(hex);
+      var into = hexToRgb(target);
+      var channels = base.map(function (channel, index) {
+        return Math.round(channel + (into[index] - channel) * amount);
+      });
+      return "rgb(" + channels.join(", ") + ")";
+    }
+
+    function applyColor(hex) {
+      var root = document.documentElement.style;
+      root.setProperty("--primary", hex);
+      root.setProperty("--primary-dark", mix(hex, "#000000", 0.32));
+      root.setProperty("--primary-soft", mix(hex, "#ffffff", 0.88));
+      root.setProperty("--primary-muted", mix(hex, "#ffffff", 0.45));
+      root.setProperty("--on-dark", mix(hex, "#ffffff", 0.78));
+    }
+
+    function fillLogo(element, name) {
+      var parts = String(name || "").trim().split(/\s+/);
+      element.replaceChildren();
+      if (parts.length < 2) {
+        element.textContent = name || "";
+        return;
+      }
+      var accent = parts.pop();
+      element.append(document.createTextNode(parts.join(" ") + " "));
+      var mark = document.createElement("span");
+      mark.textContent = accent;
+      element.append(mark);
+    }
+
+    function addLink(parent, label, href, className) {
+      var link = document.createElement("a");
+      link.href = href;
+      link.textContent = label;
+      if (className) link.className = className;
+      parent.append(link);
+      return link;
+    }
+
+    function render(config) {
+      applyColor(config.primaryColor || "#1554A3");
+      document.title = config.companyName + " | " + config.heroTitle;
+      document.querySelector('meta[name="description"]').setAttribute("content", config.pageDescription || config.heroDescription || "");
+
+      fillLogo(document.querySelector(".logo"), config.companyName);
+      var nav = document.querySelector(".nav");
+      nav.replaceChildren();
+      (config.menu || []).forEach(function (item) {
+        addLink(nav, item.label, item.href);
+      });
+
+      text(document.querySelector("[data-field='hero-eyebrow']"), config.heroEyebrow);
+      text(document.querySelector("[data-field='hero-title']"), config.heroTitle);
+      text(document.querySelector("[data-field='hero-description']"), config.heroDescription);
+
+      var actions = document.querySelector(".hero-actions");
+      actions.replaceChildren();
+      (config.heroActions || []).forEach(function (action) {
+        addLink(actions, action.label, action.href, action.ghost ? "button button-ghost" : "button");
+      });
+
+      var panel = config.heroPanel || { items: [] };
+      text(document.querySelector(".panel-label"), panel.label);
+      var panelList = document.querySelector(".hero-panel ul");
+      panelList.replaceChildren();
+      (panel.items || []).forEach(function (item) {
+        var li = document.createElement("li");
+        var title = document.createElement("strong");
+        var description = document.createElement("span");
+        title.textContent = item.title;
+        description.textContent = item.description;
+        li.append(title, description);
+        panelList.append(li);
+      });
+
+      var about = config.about || { facts: [] };
+      text(document.querySelector(".about .eyebrow"), menuLabel(config, "#about"));
+      text(document.querySelector(".about h2"), about.title);
+      text(document.querySelector(".about-grid > p"), about.body);
+      var facts = document.querySelector(".facts");
+      facts.replaceChildren();
+      (about.facts || []).forEach(function (fact) {
+        var wrap = document.createElement("div");
+        var label = document.createElement("dt");
+        var value = document.createElement("dd");
+        label.textContent = fact.label;
+        value.textContent = fact.value;
+        wrap.append(label, value);
+        facts.append(wrap);
+      });
+
+      var business = config.business || { items: [] };
+      text(document.querySelector(".business .eyebrow"), menuLabel(config, "#business"));
+      text(document.querySelector(".business h2"), business.title);
+      var businessList = document.querySelector(".business-list");
+      businessList.replaceChildren();
+      (business.items || []).forEach(function (item) {
+        var li = document.createElement("li");
+        var title = document.createElement("h3");
+        var description = document.createElement("p");
+        title.textContent = item.title;
+        description.textContent = item.description;
+        li.append(title, description);
+        businessList.append(li);
+      });
+
+      var products = config.products || { items: [] };
+      text(document.querySelector(".products .eyebrow"), menuLabel(config, "#products"));
+      text(document.querySelector(".products h2"), products.title);
+      var productGrid = document.querySelector(".product-grid");
+      productGrid.replaceChildren();
+      (products.items || []).forEach(function (item, index) {
+        var article = document.createElement("article");
+        var indexLabel = document.createElement("p");
+        var title = document.createElement("h3");
+        var description = document.createElement("p");
+        indexLabel.className = "product-index";
+        indexLabel.textContent = String(index + 1).padStart(2, "0");
+        title.textContent = item.name;
+        description.textContent = item.description;
+        article.append(indexLabel, title, description);
+        productGrid.append(article);
+      });
+
+      var contact = config.contact || { fields: {} };
+      text(document.querySelector(".contact .eyebrow"), menuLabel(config, "#contact"));
+      text(document.querySelector(".contact h2"), contact.title);
+      text(document.querySelector(".contact-copy > p:last-of-type"), contact.description);
+      var address = document.querySelector("address");
+      address.replaceChildren();
+      var addressLine = document.createElement("span");
+      addressLine.textContent = contact.address || "";
+      var phone = document.createElement("a");
+      phone.href = "tel:" + String(contact.phone || "").replace(/[^\d+]/g, "");
+      phone.textContent = contact.phone || "";
+      var email = document.createElement("a");
+      email.href = "mailto:" + (contact.email || "");
+      email.textContent = contact.email || "";
+      address.append(addressLine, phone, email);
+
+      var form = document.querySelector(".inquiry");
+      var note = form.querySelector(".form-note");
+      form.replaceChildren();
+      [
+        ["name", contact.fields.name, "text", "name"],
+        ["company", contact.fields.company, "text", "organization"],
+        ["phone", contact.fields.phone, "tel", "tel"],
+        ["message", contact.fields.message, "textarea", null]
+      ].forEach(function (field) {
+        var label = document.createElement("label");
+        label.append(document.createTextNode(field[1] || ""));
+        var input = field[2] === "textarea" ? document.createElement("textarea") : document.createElement("input");
+        input.name = field[0];
+        input.required = true;
+        if (field[2] === "textarea") input.rows = 5;
+        else input.type = field[2];
+        if (field[3]) input.autocomplete = field[3];
+        label.append(input);
+        form.append(label);
+      });
+      var button = document.createElement("button");
+      button.className = "button";
+      button.type = "submit";
+      button.textContent = contact.submit || "문의 보내기";
+      form.append(button, note);
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        note.textContent = contact.success || "";
+        form.reset();
+      });
+
+      var footer = document.querySelector(".footer");
+      footer.replaceChildren();
+      var brand = document.createElement("p");
+      var copy = document.createElement("p");
+      brand.textContent = config.companyName;
+      copy.textContent = "© " + (config.year || "") + " " + config.companyName + ". " + config.heroTitle + ".";
+      footer.append(brand, copy);
+    }
+
+    fetch("config.json", { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("config");
+        return response.json();
+      })
+      .then(render)
+      .catch(function () {
+        var message = document.createElement("p");
+        message.className = "load-error";
+        message.textContent = "config.json을 읽지 못했습니다. 페이지를 파일로 직접 열면 설정을 불러올 수 없습니다.";
+        document.body.prepend(message);
+      });
+  </script>
+</body>
+</html>

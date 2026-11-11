@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Homepage | 기업 홈페이지</title>
+  <meta name="description" content="업종에 맞는 기업 홈페이지를 고르고, 문구와 색만 바꿔 바로 공개합니다.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top">AI Homepage</a>
+    <nav class="topnav" id="topnav" aria-label="주요 메뉴">
+      <a href="#templates">템플릿</a>
+      <a href="#steps">만드는 순서</a>
+      <a href="#features">운영</a>
+      <a href="#faq">질문</a>
+    </nav>
+    <div class="top-actions">
+      <a class="pill" href="#start">둘러보기</a>
+      <a class="pill pill-dark" href="/template1/">템플릿 열기</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="topnav">메뉴</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>업종을 고르면<br>바로 쓰는 <span>기업 홈페이지</span></h1>
+      <p class="hero-lead">회사 이름과 소개만 있으면 됩니다.<br>고른 템플릿에 글과 색을 채워 공개합니다.</p>
+      <form class="composer" id="composer">
+        <div class="thread" id="thread" hidden></div>
+        <label class="sr-only" for="brief">만들고 싶은 사이트</label>
+        <textarea id="brief" name="brief" rows="3" placeholder="어떤 홈페이지를 만들까요?&#10;예) 제조 기업 · 학원 · 인테리어 · 병원"></textarea>
+        <div class="composer-bar">
+          <span id="composer-status">보내면 GPT가 기획 답을 돌려줍니다</span>
+          <button class="send" type="button" aria-label="GPT에게 보내기">↑</button>
+        </div>
+      </form>
+      <ul class="metrics">
+        <li><strong>3종</strong><span>업종 템플릿</span></li>
+        <li><strong>한 파일</strong><span>문구와 색 수정</span></li>
+        <li><strong>반응형</strong><span>PC와 휴대폰</span></li>
+      </ul>
+    </section>
+
+    <section class="showcase" id="templates">
+      <div class="slider" aria-roledescription="carousel">
+        <article class="slide is-active">
+          <div class="preview preview-a">
+            <p>ABC 기업</p>
+            <strong>미래를 만드는 기업</strong>
+          </div>
+          <h2>기업 소개</h2>
+          <p>제조·기술</p>
+        </article>
+        <article class="slide">
+          <div class="preview preview-b">
+            <p>교육 센터</p>
+            <strong>배움이 이어지는 공간</strong>
+          </div>
+          <h2>학원·교육</h2>
+          <p>수업 안내</p>
+        </article>
+        <article class="slide">
+          <div class="preview preview-c">
+            <p>공간 스튜디오</p>
+            <strong>머무는 곳을 설계합니다</strong>
+          </div>
+          <h2>인테리어</h2>
+          <p>프로젝트</p>
+        </article>
+      </div>
+      <div class="slider-controls">
+        <button type="button" data-dir="-1" aria-label="이전 템플릿">‹</button>
+        <button type="button" data-dir="1" aria-label="다음 템플릿">›</button>
+        <span class="slider-count">1 / 3</span>
+      </div>
+    </section>
+
+    <section class="steps" id="steps">
+      <div class="section-intro">
+        <h2>고르고, 채우고, 공개합니다</h2>
+        <p>빈 화면에서 시작하지 않습니다. 틀을 고른 뒤 필요한 문장만 바꿉니다.</p>
+      </div>
+      <ol>
+        <li>
+          <div>
+            <p class="step-no">1단계</p>
+            <h3>업종과 소개를 적습니다</h3>
+            <p>누구를 위한 사이트인지, 어떤 메뉴가 필요한지만 적으면 첫 구성이 정해집니다.</p>
+          </div>
+          <aside>
+            <p>회사소개 · 사업분야 · 제품 · 문의</p>
+          </aside>
+        </li>
+        <li>
+          <div>
+            <p class="step-no">2단계</p>
+            <h3>템플릿에 내용을 넣습니다</h3>
+            <p>디자인 틀은 유지하고, 설정 파일의 제목·설명·색만 바꿉니다.</p>
+          </div>
+          <aside>
+            <p>config.json 한 장이 화면 문구를 바꿉니다</p>
+          </aside>
+        </li>
+        <li>
+          <div>
+            <p class="step-no">3단계</p>
+            <h3>주소를 열고 문의 받습니다</h3>
+            <p>공개한 뒤에는 방문자가 문의 폼으로 연락하고, 화면은 휴대폰에도 맞춰집니다.</p>
+          </div>
+          <aside>
+            <p>문의 폼 · 전화 · 메일</p>
+          </aside>
+        </li>
+      </ol>
+    </section>
+
+    <section class="features" id="features">
+      <div class="section-intro">
+        <h2>페이지를 만든 뒤 운영에 필요한 것들</h2>
+        <p>주소, 문의, 검색, 수정이 한 사이트 안에 있습니다.</p>
+      </div>
+      <div class="feature-grid">
+        <article><h3>주소 연결</h3><p>보유한 도메인을 붙이거나, 기본 주소로 먼저 공개합니다.</p></article>
+        <article><h3>문의 폼</h3><p>이름, 연락처, 내용을 받고 화면에 접수 안내를 보여 줍니다.</p></article>
+        <article><h3>검색 정보</h3><p>제목과 설명을 페이지에 넣어 검색 결과에 사이트가 읽히게 합니다.</p></article>
+        <article><h3>메뉴 구성</h3><p>회사소개, 사업, 제품, 문의처럼 필요한 구역만 나열합니다.</p></article>
+        <article><h3>색 변경</h3><p>기본 색 한 가지를 바꾸면 버튼과 강조 색이 함께 바뀝니다.</p></article>
+        <article><h3>문구 수정</h3><p>화면을 다시 그리지 않고 설정 파일의 문장만 고칩니다.</p></article>
+        <article><h3>휴대폰 화면</h3><p>넓은 화면의 배치가 좁은 화면에서는 세로로 쌓입니다.</p></article>
+        <article><h3>템플릿 확장</h3><p>같은 방식으로 업종별 템플릿을 더 붙일 수 있습니다.</p></article>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2>자주 묻는 질문</h2>
+      <div>
+        <details>
+          <summary>디자인을 직접 그려야 하나요?</summary>
+          <p>아니요. 준비된 템플릿을 고르고 글과 색만 바꾸면 됩니다.</p>
+        </details>
+        <details>
+          <summary>문구는 어디에서 바꾸나요?</summary>
+          <p>템플릿 폴더의 config.json을 수정한 뒤 페이지를 새로고침하면 반영됩니다.</p>
+        </details>
+        <details>
+          <summary>휴대폰용 페이지를 따로 만드나요?</summary>
+          <p>아니요. 화면 너비에 맞춰 메뉴와 카드 배치가 바뀝니다.</p>
+        </details>
+        <details>
+          <summary>지금 볼 수 있는 템플릿은 무엇인가요?</summary>
+          <p>기업 소개형 템플릿을 열어 볼 수 있습니다. 상단의 템플릿 열기로 이동합니다.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta" id="start">
+      <h2>어떤 템플릿부터 볼까요?</h2>
+      <p>기업 소개 화면을 먼저 열고, 문구만 바꿔 보면 됩니다.</p>
+      <a class="pill pill-dark" href="/template1/">기업 템플릿 보기</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>AI Homepage</p>
+    <p>템플릿 · 만드는 순서 · 문의</p>
+    <p>© 2026 AI Homepage</p>
+  </footer>
+  <script src="app.js?v=4"></script>
+</body>
+</html>
