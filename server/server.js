@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 // HTML, CSS 등 템플릿 파일 제공
 app.use("/template1", express.static(templatePath));
+app.use("/template2", express.static(path.join(__dirname, "../templates/template2")));
 
 // config.json 불러오기
 app.get("/api/config", (req, res) => {
@@ -57,7 +58,8 @@ app.post("/api/apply", async (req, res) => {
     return;
   }
 
-  const configPath = path.join(templatePath, "config.json");
+  const templateId = req.body && req.body.template === "template2" ? "template2" : "template1";
+  const configPath = path.join(__dirname, "../templates", templateId, "config.json");
   try {
     const current = JSON.parse(fs.readFileSync(configPath, "utf8"));
     const reply = await askOpenAI([
@@ -74,7 +76,7 @@ app.post("/api/apply", async (req, res) => {
     const next = JSON.parse(stripJsonFence(reply));
     const merged = mergeConfig(current, next);
     fs.writeFileSync(configPath, JSON.stringify(merged, null, 2) + "\n", "utf8");
-    res.json({ url: "/template1/?applied=" + Date.now() });
+    res.json({ url: "/" + templateId + "/?applied=" + Date.now() });
   } catch (error) {
     res.status(error.status || 502).json({ error: error.message });
   }

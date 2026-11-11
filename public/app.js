@@ -5,6 +5,11 @@ var sendButton = document.querySelector(".send");
 var statusLine = document.querySelector("#composer-status");
 var chatMessages = [];
 var sending = false;
+var selectedTemplate = "template1";
+var templateChoices = [
+  ["template1", "템플릿 1"],
+  ["template2", "템플릿 2"]
+];
 
 function setStatus(text, isError) {
   statusLine.textContent = text;
@@ -84,8 +89,38 @@ function renderThread(note, isError) {
     return;
   }
   if (chatMessages.length && chatMessages[chatMessages.length - 1].role === "assistant") {
-    thread.append(actionButtons());
+    thread.append(replyActions());
   }
+}
+
+function replyActions() {
+  var wrap = document.createElement("div");
+  wrap.className = "reply-actions";
+  wrap.append(templatePicker(), actionButtons());
+  return wrap;
+}
+
+function templatePicker() {
+  var picker = document.createElement("div");
+  picker.className = "template-pick";
+  var label = document.createElement("span");
+  label.textContent = "템플릿 고르기";
+  picker.append(label);
+  templateChoices.forEach(function (choice) {
+    var button = document.createElement("button");
+    button.type = "button";
+    button.textContent = choice[1];
+    button.setAttribute("aria-pressed", selectedTemplate === choice[0] ? "true" : "false");
+    button.addEventListener("click", function () {
+      selectedTemplate = choice[0];
+      picker.querySelectorAll("button").forEach(function (item) {
+        item.setAttribute("aria-pressed", "false");
+      });
+      button.setAttribute("aria-pressed", "true");
+    });
+    picker.append(button);
+  });
+  return picker;
 }
 
 function actionButtons() {
@@ -120,7 +155,7 @@ function applyTemplate() {
   fetch("/api/apply", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ messages: chatMessages })
+    body: JSON.stringify({ messages: chatMessages, template: selectedTemplate })
   })
     .then(function (response) {
       return response.json().then(function (data) {

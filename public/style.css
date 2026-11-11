@@ -169,6 +169,41 @@ textarea {
 
 .bubble.error { background: #fff1ef; color: #8a2b12; }
 
+.reply-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.template-pick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.template-pick span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.template-pick button {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: white;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.template-pick button[aria-pressed="true"] {
+  border-color: #1554a3;
+  background: #e8f3fb;
+  color: #1554a3;
+}
+
 .next-actions {
   display: flex;
   flex-wrap: wrap;

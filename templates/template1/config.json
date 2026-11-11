@@ -1,35 +1,72 @@
 {
   "companyName": "ABC 기업",
-  "primaryColor": "#1554A3",
+  "primaryColor": "#fce002",
   "heroEyebrow": "산업 기술 파트너",
-  "heroTitle": "미래를 만드는 기업",
+  "heroTitle": "독보적인 페이지를 만든다",
   "heroDescription": "혁신적인 기술과 서비스로 생산, 시스템, 인프라를 한 흐름에 연결합니다.",
   "pageDescription": "ABC 기업은 혁신적인 기술과 서비스로 산업 현장의 다음 단계를 설계합니다.",
   "menu": [
-    { "label": "회사소개", "href": "#about" },
-    { "label": "사업분야", "href": "#business" },
-    { "label": "제품소개", "href": "#products" },
-    { "label": "고객문의", "href": "#contact" }
+    {
+      "label": "회사소개",
+      "href": "#about"
+    },
+    {
+      "label": "사업분야",
+      "href": "#business"
+    },
+    {
+      "label": "제품소개",
+      "href": "#products"
+    },
+    {
+      "label": "고객문의",
+      "href": "#contact"
+    }
   ],
   "heroActions": [
-    { "label": "프로젝트 상담", "href": "#contact" },
-    { "label": "사업분야 보기", "href": "#business", "ghost": true }
+    {
+      "label": "프로젝트 상담",
+      "href": "#contact"
+    },
+    {
+      "label": "사업분야 보기",
+      "href": "#business",
+      "ghost": true
+    }
   ],
   "heroPanel": {
     "label": "ABC 기업이 맡는 일",
     "items": [
-      { "title": "설계", "description": "현장 진단과 도입 계획" },
-      { "title": "구축", "description": "시스템과 설비 연동" },
-      { "title": "운영", "description": "안정화와 성과 관리" }
+      {
+        "title": "설계",
+        "description": "현장 진단과 도입 계획"
+      },
+      {
+        "title": "구축",
+        "description": "시스템과 설비 연동"
+      },
+      {
+        "title": "운영",
+        "description": "안정화와 성과 관리"
+      }
     ]
   },
   "about": {
     "title": "현장에 남는 기술을 만듭니다",
     "body": "ABC 기업은 제조와 서비스 기업이 새로운 설비를 들이기 전부터, 그 설비가 매일의 업무에 남기까지 함께합니다. 보기 좋은 제안서보다 가동 첫날의 안정, 그리고 일 년 뒤의 운영 기록을 더 중요하게 봅니다.",
     "facts": [
-      { "label": "업력", "value": "18년" },
-      { "label": "수행 프로젝트", "value": "240건" },
-      { "label": "운영 지원", "value": "전국" }
+      {
+        "label": "업력",
+        "value": "18년"
+      },
+      {
+        "label": "수행 프로젝트",
+        "value": "240건"
+      },
+      {
+        "label": "운영 지원",
+        "value": "전국"
+      }
     ]
   },
   "business": {

@@ -1,12 +1,68 @@
 {
-    "companyName": "ABC 기업",
-    "primaryColor": "#1554A3",
-    "heroTitle": "미래를 만드는 기업",
-    "heroDescription": "혁신적인 기술과 서비스",
-    "menu": [
-      "회사소개",
-      "사업분야",
-      "제품소개",
-      "고객문의"
+  "companyName": "라움 교육",
+  "primaryColor": "#C4622D",
+  "heroEyebrow": "소규모 교육 센터",
+  "heroTitle": "배움이 이어지는 공간",
+  "heroDescription": "수업은 짧게, 이해는 길게 가져갑니다. 학생의 속도와 목표에 맞춰 다음 시간을 설계합니다.",
+  "pageDescription": "라움 교육은 소규모 수업으로 배움이 끊기지 않는 공간을 만듭니다.",
+  "menu": [
+    { "label": "센터소개", "href": "#about" },
+    { "label": "프로그램", "href": "#business" },
+    { "label": "수업안내", "href": "#products" },
+    { "label": "상담문의", "href": "#contact" }
+  ],
+  "heroActions": [
+    { "label": "상담 신청", "href": "#contact" },
+    { "label": "프로그램 보기", "href": "#business", "ghost": true }
+  ],
+  "heroPanel": {
+    "label": "수업이 이어지는 방식",
+    "items": [
+      { "title": "진단", "description": "지금 막히는 지점을 먼저 확인합니다." },
+      { "title": "수업", "description": "여덟 명 이하로 같은 목표를 맞춥니다." },
+      { "title": "복습", "description": "다음 시간 전에 이해한 내용을 남깁니다." }
     ]
-  }
+  },
+  "about": {
+    "title": "한 반의 속도를 존중합니다",
+    "body": "라움 교육은 많은 인원을 한 진도에 묶지 않습니다. 기초가 흔들리면 다음 단원을 열지 않고, 이해한 학생에게는 같은 문제를 반복시키지 않습니다. 상담에서 정한 목표가 수업 기록으로 이어지게 합니다.",
+    "facts": [
+      { "label": "운영", "value": "12년" },
+      { "label": "수업 정원", "value": "8명" },
+      { "label": "상담", "value": "당일" }
+    ]
+  },
+  "business": {
+    "title": "목표에 맞춰 고르는 프로그램",
+    "items": [
+      { "title": "기초 다지기", "description": "개념의 빈칸을 메우고, 혼자 문제를 읽을 수 있을 때까지 짧게 반복합니다." },
+      { "title": "시험 대비", "description": "범위를 나누고, 막히는 유형만 모아 시험 전 주를 가볍게 만듭니다." },
+      { "title": "성인 회화", "description": "업무와 여행에서 바로 쓰는 문장을 상황별로 말하고 고칩니다." },
+      { "title": "포트폴리오", "description": "결과물의 구성을 함께 정리하고, 제출 전에 빠진 설명을 채웁니다." }
+    ]
+  },
+  "products": {
+    "title": "이번 학기 수업",
+    "items": [
+      { "name": "오전 기초반", "description": "평일 오전, 개념을 천천히 쌓는 소규모 수업입니다." },
+      { "name": "저녁 실전반", "description": "일과 후에 유형별 문제와 피드백을 받는 수업입니다." },
+      { "name": "주말 특강", "description": "한 주제를 하루 동안 끝내고 정리 자료를 가져갑니다." }
+    ]
+  },
+  "contact": {
+    "title": "상담 일정을 남겨 주세요",
+    "description": "목표와 가능한 시간만 적어도 됩니다. 첫 상담에서 맞는 반을 함께 고릅니다.",
+    "address": "서울특별시 마포구 월드컵로 12",
+    "phone": "02-555-0199",
+    "email": "hello@raum.example",
+    "fields": {
+      "name": "이름",
+      "company": "학생 또는 보호자",
+      "phone": "연락처",
+      "message": "원하는 수업"
+    },
+    "submit": "상담 남기기",
+    "success": "상담 요청을 받았습니다. 오늘 안으로 가능한 시간을 안내드리겠습니다."
+  },
+  "year": 2026
+}
