@@ -1,0 +1,12 @@
+{
+    "companyName": "ABC 기업",
+    "primaryColor": "#1554A3",
+    "heroTitle": "미래를 만드는 기업",
+    "heroDescription": "혁신적인 기술과 서비스",
+    "menu": [
+      "회사소개",
+      "사업분야",
+      "제품소개",
+      "고객문의"
+    ]
+  }
