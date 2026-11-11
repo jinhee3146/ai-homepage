@@ -1,12 +1,68 @@
 {
-    "companyName": "ABC 기업",
-    "primaryColor": "#1554A3",
-    "heroTitle": "미래를 만드는 기업",
-    "heroDescription": "혁신적인 기술과 서비스",
-    "menu": [
-      "회사소개",
-      "사업분야",
-      "제품소개",
-      "고객문의"
+  "companyName": "결 스튜디오",
+  "primaryColor": "#8C6A4A",
+  "heroEyebrow": "주거 인테리어 스튜디오",
+  "heroTitle": "머무는 곳을 설계합니다",
+  "heroDescription": "가구를 채우기 전에 빛의 방향과 동선을 정합니다. 사는 사람의 하루가 편한 집을 만듭니다.",
+  "pageDescription": "결 스튜디오는 주거 공간을 빛의 방향과 동선부터 설계합니다.",
+  "menu": [
+    { "label": "스튜디오", "href": "#about" },
+    { "label": "작업방식", "href": "#business" },
+    { "label": "프로젝트", "href": "#products" },
+    { "label": "상담", "href": "#contact" }
+  ],
+  "heroActions": [
+    { "label": "상담 예약", "href": "#contact" },
+    { "label": "프로젝트 보기", "href": "#products", "ghost": true }
+  ],
+  "heroPanel": {
+    "label": "설계가 시작되는 순서",
+    "items": [
+      { "title": "이야기", "description": "사는 방식과 남기고 싶은 물건을 듣습니다." },
+      { "title": "도면", "description": "빛, 수납, 동선을 한 장에 맞춥니다." },
+      { "title": "시공", "description": "재료의 결이 맞을 때까지 현장에서 봅니다." }
     ]
-  }
+  },
+  "about": {
+    "title": "비운 공간이 먼저입니다",
+    "body": "결 스튜디오는 집을 보여 주기 위한 장면으로 채우지 않습니다. 아침 빛이 닿는 자리, 신발을 벗고 멈추는 자리, 하루를 마치는 자리를 먼저 정한 뒤 가구와 색을 올립니다.",
+    "facts": [
+      { "label": "작업", "value": "11년" },
+      { "label": "주거", "value": "64곳" },
+      { "label": "상담", "value": "예약" }
+    ]
+  },
+  "business": {
+    "title": "집에 맞춘 작업",
+    "items": [
+      { "title": "아파트 리모델링", "description": "구조는 유지하고, 수납과 빛의 길을 다시 잡습니다." },
+      { "title": "주택 설계", "description": "마당과 실내가 이어지는 동선으로 평면을 짭니다." },
+      { "title": "상업 공간", "description": "머무는 시간과 손님의 시선에 맞춰 자리를 배치합니다." },
+      { "title": "스타일링", "description": "공사 없이 가구, 조명, 패브릭만으로 분위기를 바꿉니다." }
+    ]
+  },
+  "products": {
+    "title": "최근 프로젝트",
+    "items": [
+      { "name": "한남 아파트", "description": "서쪽 빛을 가리지 않도록 주방을 낮추고, 수납을 벽 안으로 넣었습니다." },
+      { "name": "성수 주택", "description": "마당과 거실의 바닥 높이를 맞춰 신발을 벗는 자리를 넓혔습니다." },
+      { "name": "연남 작업실", "description": "작업 테이블과 쉬는 소파를 빛 방향으로 나누어 두었습니다." }
+    ]
+  },
+  "contact": {
+    "title": "공간을 알려 주세요",
+    "description": "주소와 대략의 평수, 바꾸고 싶은 자리만 적어도 첫 상담을 준비할 수 있습니다.",
+    "address": "서울특별시 성동구 연무장길 28",
+    "phone": "02-333-0148",
+    "email": "hello@gyeol.example",
+    "fields": {
+      "name": "이름",
+      "company": "공간 종류",
+      "phone": "연락처",
+      "message": "바꾸고 싶은 곳"
+    },
+    "submit": "상담 남기기",
+    "success": "상담 요청을 받았습니다. 일정과 함께 다시 연락드리겠습니다."
+  },
+  "year": 2026
+}

@@ -7,8 +7,9 @@ var chatMessages = [];
 var sending = false;
 var selectedTemplate = "template1";
 var templateChoices = [
-  ["template1", "템플릿 1"],
-  ["template2", "템플릿 2"]
+  ["template1", "템플릿 1", "previews/template1.png"],
+  ["template2", "템플릿 2", "previews/template2.png"],
+  ["template3", "템플릿 3", "previews/template3.png"]
 ];
 
 function setStatus(text, isError) {
@@ -105,21 +106,28 @@ function templatePicker() {
   picker.className = "template-pick";
   var label = document.createElement("span");
   label.textContent = "템플릿 고르기";
-  picker.append(label);
+  var cards = document.createElement("div");
+  cards.className = "template-cards";
   templateChoices.forEach(function (choice) {
     var button = document.createElement("button");
     button.type = "button";
-    button.textContent = choice[1];
     button.setAttribute("aria-pressed", selectedTemplate === choice[0] ? "true" : "false");
+    var image = document.createElement("img");
+    image.src = choice[2];
+    image.alt = choice[1] + " 화면";
+    var name = document.createElement("span");
+    name.textContent = choice[1];
+    button.append(image, name);
     button.addEventListener("click", function () {
       selectedTemplate = choice[0];
-      picker.querySelectorAll("button").forEach(function (item) {
+      cards.querySelectorAll("button").forEach(function (item) {
         item.setAttribute("aria-pressed", "false");
       });
       button.setAttribute("aria-pressed", "true");
     });
-    picker.append(button);
+    cards.append(button);
   });
+  picker.append(label, cards);
   return picker;
 }
 
