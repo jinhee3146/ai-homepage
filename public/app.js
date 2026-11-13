@@ -151,9 +151,26 @@ function actionButtons() {
   return actions;
 }
 
+function writePopup(popup, title, body) {
+  if (!popup) return;
+  popup.document.open();
+  popup.document.write(
+    "<!DOCTYPE html><html lang=\"ko\"><head><meta charset=\"utf-8\"><title>" + title + "</title><style>" +
+    "body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f4fbff;color:#16181d;font-family:Pretendard,'Malgun Gothic',sans-serif;}" +
+    "main{text-align:center;padding:32px;}" +
+    "h1{margin:0;font-size:28px;letter-spacing:-0.04em;}" +
+    "p{margin:10px 0 0;color:#5e6672;line-height:1.7;}" +
+    ".spin{width:36px;height:36px;margin:0 auto 18px;border:3px solid #d7e6f5;border-top-color:#1554a3;border-radius:50%;animation:spin .8s linear infinite;}" +
+    "@keyframes spin{to{transform:rotate(360deg)}}" +
+    "</style></head><body><main>" + body + "</main></body></html>"
+  );
+  popup.document.close();
+}
+
 function applyTemplate() {
   if (sending || !chatMessages.length) return;
-  var popup = window.open("", "_blank");
+  var jobId = String(Date.now());
+  var popup = window.open("/working.html?job=" + encodeURIComponent(jobId), "_blank");
   sending = true;
   sendButton.disabled = true;
   sendButton.classList.add("is-busy");
@@ -172,13 +189,19 @@ function applyTemplate() {
       });
     })
     .then(function (data) {
-      if (popup) popup.location = data.url;
+      localStorage.setItem("template-result-" + jobId, data.url);
+      if (popup && !popup.closed) popup.location = data.url;
       else window.location.href = data.url;
       renderThread();
       setStatus("템플릿을 새 창에서 열었습니다.");
     })
     .catch(function (error) {
-      if (popup) popup.close();
+      localStorage.setItem("template-error-" + jobId, error.message || "다시 시도해 주세요.");
+      writePopup(
+        popup && !popup.closed ? popup : null,
+        "템플릿 작업 실패",
+        "<h1>템플릿을 만들지 못했습니다</h1><p>" + String(error.message || "다시 시도해 주세요.").replace(/</g, "") + "</p>"
+      );
       renderThread(error.message, true);
       setStatus(error.message, true);
     })
